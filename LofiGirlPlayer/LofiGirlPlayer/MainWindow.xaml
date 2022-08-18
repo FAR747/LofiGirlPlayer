@@ -5,10 +5,17 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:LofiGirlPlayer"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
     Title="LofiGirlPlayer "
     Width="800"
     Height="450"
     ResizeMode="CanMinimize"
     mc:Ignorable="d">
-    <Grid />
+    <Grid>
+        <wv2:WebView2
+            Name="Browser"
+            CoreWebView2InitializationCompleted="Browser_Initialized"
+            NavigationCompleted="Browser_NavigationCompleted"
+            Source="https://www.youtube-nocookie.com" />
+    </Grid>
 </Window>
