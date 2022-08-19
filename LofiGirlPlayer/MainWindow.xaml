@@ -4,18 +4,33 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:LofiGirlPlayer"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
     Title="LofiGirlPlayer "
     Width="800"
     Height="450"
+    Background="{DynamicResource MaterialDesignPaper}"
+    FontFamily="{DynamicResource MaterialDesignFont}"
     ResizeMode="CanMinimize"
+    TextElement.FontSize="13"
+    TextElement.FontWeight="Regular"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    TextOptions.TextFormattingMode="Ideal"
+    TextOptions.TextRenderingMode="Auto"
     mc:Ignorable="d">
     <Grid>
-        <wv2:WebView2
-            Name="Browser"
-            CoreWebView2InitializationCompleted="Browser_Initialized"
-            NavigationCompleted="Browser_NavigationCompleted"
-            Source="https://www.youtube-nocookie.com" />
+        <Grid x:Name="WebGrid" Visibility="Hidden">
+            <wv2:WebView2
+                x:Name="Browser"
+                CoreWebView2InitializationCompleted="Browser_Initialized"
+                NavigationCompleted="Browser_NavigationCompleted"
+                Source="https://www.youtube-nocookie.com" />
+        </Grid>
+        <Grid
+            x:Name="UIGrid"
+            Margin="0"
+            Panel.ZIndex="100"
+            Background="#FF303030" />
     </Grid>
 </Window>
