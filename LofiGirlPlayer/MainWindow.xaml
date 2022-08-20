@@ -51,6 +51,7 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
+                Click="PlayButton_Click"
                 Style="{StaticResource MaterialDesignIconButton}">
                 <materialDesign:PackIcon
                     x:Name="PlayIcon"
@@ -94,6 +95,7 @@
                 VerticalAlignment="Bottom"
                 Maximum="1"
                 Minimum="0"
+                ValueChanged="VolumeSlider_ValueChanged"
                 Value="0.95" />
             <Button
                 x:Name="VolumeMuteButton"
@@ -102,6 +104,7 @@
                 Margin="161,0,407,12"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Bottom"
+                Click="VolumeMuteButton_Click"
                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                 Style="{StaticResource MaterialDesignIconButton}">
                 <materialDesign:PackIcon
@@ -115,9 +118,10 @@
                 Margin="0,22,64,0"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
+                Click="RefreshButton_Click"
                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                 Style="{StaticResource MaterialDesignIconForegroundButton}"
-                ToolTip="Refresh stream" Click="RefreshButton_Click">
+                ToolTip="Refresh stream">
                 <materialDesign:PackIcon
                     Width="26"
                     Height="26"
@@ -131,7 +135,8 @@
                 Margin="0,20,0,0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                materialDesign:HintAssist.Hint="Some item"
+                materialDesign:HintAssist.Hint="Stream"
+                SelectionChanged="StreamComboBox_SelectionChanged"
                 Style="{StaticResource MaterialDesignOutlinedComboBox}" />
         </Grid>
     </Grid>
