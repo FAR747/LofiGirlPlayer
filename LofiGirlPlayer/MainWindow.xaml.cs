@@ -44,7 +44,13 @@ namespace LofiGirlPlayer
 			Browser.CoreWebView2.ExecuteScriptAsync(adblock);
 			Browser.CoreWebView2.ExecuteScriptAsync("document.getElementsByClassName('video-stream html5-main-video')[0].volume = 1");
 			//Browser.Visibility = Visibility.Hidden;
+			LoadingCircle.Visibility = Visibility.Collapsed;
 			
+		}
+
+		private void Browser_NavigationStarting(object sender, CoreWebView2NavigationStartingEventArgs e)
+		{
+			LoadingCircle.Visibility = Visibility.Visible;
 		}
 	}
 }

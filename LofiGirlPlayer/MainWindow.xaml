@@ -26,6 +26,7 @@
                 x:Name="Browser"
                 CoreWebView2InitializationCompleted="Browser_Initialized"
                 NavigationCompleted="Browser_NavigationCompleted"
+                NavigationStarting="Browser_NavigationStarting"
                 Source="https://www.youtube-nocookie.com" />
         </Grid>
         <Grid
@@ -64,7 +65,7 @@
                 VerticalAlignment="Bottom"
                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                 Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
-                ToolTip="MaterialDesignFloatingActionDarkButton">
+                ToolTip="Settings">
                 <materialDesign:PackIcon
                     Width="18"
                     Height="18"
@@ -91,9 +92,9 @@
                 Margin="0,0,0,15"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Bottom"
-                Maximum="100"
+                Maximum="1"
                 Minimum="0"
-                Value="95" />
+                Value="0.95" />
             <Button
                 x:Name="VolumeMuteButton"
                 Width="26"
@@ -108,6 +109,21 @@
                     Width="18"
                     Height="18"
                     Kind="VolumeHigh" />
+            </Button>
+            <Button
+                x:Name="RefreshButton"
+                Margin="0,22,64,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                Style="{StaticResource MaterialDesignIconForegroundButton}"
+                ToolTip="Refresh stream">
+                <materialDesign:PackIcon
+                    Width="26"
+                    Height="26"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Kind="Refresh" />
             </Button>
             <ComboBox
                 x:Name="StreamComboBox"
