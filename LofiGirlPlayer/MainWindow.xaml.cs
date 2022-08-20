@@ -52,5 +52,10 @@ namespace LofiGirlPlayer
 		{
 			LoadingCircle.Visibility = Visibility.Visible;
 		}
+
+		private void RefreshButton_Click(object sender, RoutedEventArgs e)
+		{
+			Browser.CoreWebView2.Reload();
+		}
 	}
 }

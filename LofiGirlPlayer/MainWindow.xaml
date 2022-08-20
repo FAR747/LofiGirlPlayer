@@ -117,7 +117,7 @@
                 VerticalAlignment="Top"
                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                 Style="{StaticResource MaterialDesignIconForegroundButton}"
-                ToolTip="Refresh stream">
+                ToolTip="Refresh stream" Click="RefreshButton_Click">
                 <materialDesign:PackIcon
                     Width="26"
                     Height="26"
