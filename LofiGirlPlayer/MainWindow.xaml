@@ -24,10 +24,38 @@
         <Grid x:Name="WebGrid" Visibility="Hidden">
             <wv2:WebView2
                 x:Name="Browser"
+                Margin="0,34,0,0"
                 CoreWebView2InitializationCompleted="Browser_Initialized"
                 NavigationCompleted="Browser_NavigationCompleted"
                 NavigationStarting="Browser_NavigationStarting"
                 Source="https://www.youtube-nocookie.com" />
+            <Button
+                x:Name="HideBrowserViewButton"
+                Width="32"
+                Height="32"
+                Margin="1,1,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="HideBrowserViewButton_Click"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                ToolTip="Close Browser View">
+                <materialDesign:PackIcon
+                    Width="16"
+                    Height="16"
+                    Kind="Close" />
+            </Button>
+            <TextBlock
+                x:Name="WebTitleNameTB"
+                MaxWidth="500"
+                Margin="0,5,5,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                FontSize="20"
+                Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+                Text="Title Name"
+                TextAlignment="Right"
+                TextTrimming="WordEllipsis" />
         </Grid>
         <Grid
             x:Name="UIGrid"
@@ -64,7 +92,7 @@
                 Margin="5,0,0,5"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Bottom"
-                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
                 Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
                 ToolTip="Settings">
                 <materialDesign:PackIcon
@@ -79,7 +107,8 @@
                 Margin="45,0,0,5"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Bottom"
-                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                Click="OpenBrowserViewButton_Click"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
                 Style="{StaticResource MaterialDesignIconButton}"
                 ToolTip="Open Browser View">
                 <materialDesign:PackIcon
@@ -105,7 +134,7 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Bottom"
                 Click="VolumeMuteButton_Click"
-                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
                 Style="{StaticResource MaterialDesignIconButton}">
                 <materialDesign:PackIcon
                     x:Name="VolumeMuteIcon"
@@ -119,7 +148,7 @@
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
                 Click="RefreshButton_Click"
-                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
                 Style="{StaticResource MaterialDesignIconForegroundButton}"
                 ToolTip="Refresh stream">
                 <materialDesign:PackIcon
