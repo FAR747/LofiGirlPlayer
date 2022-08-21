@@ -92,6 +92,7 @@
                 Margin="5,0,0,5"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Bottom"
+                Click="SettingsButton_Click"
                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
                 Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
                 ToolTip="Settings">
@@ -167,6 +168,18 @@
                 materialDesign:HintAssist.Hint="Stream"
                 SelectionChanged="StreamComboBox_SelectionChanged"
                 Style="{StaticResource MaterialDesignOutlinedComboBox}" />
+        </Grid>
+        <Grid
+            x:Name="SettingsUIGrid"
+            Margin="0"
+            Panel.ZIndex="10"
+            Visibility="Collapsed">
+            <Frame
+                x:Name="SettingsFrame"
+                Margin="0"
+                Content=""
+                NavigationUIVisibility="Hidden"
+                Source="/LofiGirlPlayer;component/SettingsPage.xaml" />
         </Grid>
     </Grid>
 </Window>

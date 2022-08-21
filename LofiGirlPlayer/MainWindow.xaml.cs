@@ -210,5 +210,16 @@ namespace LofiGirlPlayer
 			WebGrid.Visibility = Visibility.Hidden;
 			UIGrid.Visibility = Visibility.Visible;
 		}
+
+		private void SettingsButton_Click(object sender, RoutedEventArgs e)
+		{
+			SettingsPage sp = (SettingsPage)SettingsFrame.Content;
+			sp.mainWindow = this;
+			SettingsUIGrid.Visibility = Visibility.Visible;
+		}
+		public void HideSettingsWindow()
+		{
+			SettingsUIGrid.Visibility = Visibility.Collapsed;
+		}
 	}
 }

@@ -9,9 +9,12 @@ using System.Windows;
 namespace LofiGirlPlayer
 {
 	/// <summary>
-	/// Логика взаимодействия для App.xaml
+	/// App.xaml logic
 	/// </summary>
 	public partial class App : Application
 	{
+		public const string VERSION = "1.0.0.0"; // example 1.0.0.0 (used in AssemblyVersion and AssemblyFileVersion)
+		public const string VERSION_NAME = "1.0";
+		public const int VERSION_CODE = 1;
 	}
 }
