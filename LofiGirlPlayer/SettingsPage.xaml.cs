@@ -25,10 +25,18 @@ namespace LofiGirlPlayer
 		{
 			InitializeComponent();
 			VersionTB.Text = String.Format("Version {0} ({1})", App.VERSION_NAME, App.VERSION_CODE);
+			
+		}
+
+		public void LoadUISettings()
+		{
+			DisableGPUTB.IsChecked = mainWindow.config.DisableGPU;
+			DisableAutoPlayTB.IsChecked = mainWindow.config.DisableAutoPlay;
 		}
 
 		private void CloseSettingsButton_Click(object sender, RoutedEventArgs e)
 		{
+			ConfigManager.SaveConfig(mainWindow.config);
 			mainWindow.HideSettingsWindow();
 		}
 	}

@@ -35,8 +35,16 @@ namespace LofiGirlPlayer
 		public MainWindow()
 		{
 			config = ConfigManager.LoadConfig();
-			Environment.SetEnvironmentVariable("WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS", "--autoplay-policy=no-user-gesture-required");
+			string browserargs = "--autoplay-policy=no-user-gesture-required";
+			if (config.DisableGPU)
+			{
+				browserargs += " --disable-gpu";
+			}
+			Environment.SetEnvironmentVariable("WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS", browserargs);
 			InitializeComponent();
+			System.Globalization.NumberFormatInfo provider = new System.Globalization.NumberFormatInfo();
+			provider.NumberDecimalSeparator = ".";
+			VolumeSlider.Value = Convert.ToDouble(config.YTVolume, provider);
 			sourcelist = LoadSourceList();
 			StreamComboBox.Items.Clear();
 			foreach (SourceListElement sl in sourcelist.Sources)
@@ -73,13 +81,14 @@ namespace LofiGirlPlayer
 		public void PlaySource(int id)
 		{
 			string ytid = sourcelist.Sources[id].Ytid;
-			Browser.Source = new Uri(String.Format("https://www.youtube-nocookie.com/embed/{0}?autoplay=1&vq=small", ytid));
+			Browser.Source = new Uri(String.Format("https://www.youtube-nocookie.com/embed/{0}?autoplay=1&vq={1}", ytid, config.YTQuality));
 			System.Diagnostics.Trace.WriteLine("Loading Source: " + Browser.Source);
 		}
 
 		public async void SetVolume(string volume = "1.0")
 		{
 			if (Browser.CoreWebView2 != null) {
+				config.YTVolume = volume;
 				await Browser.CoreWebView2.ExecuteScriptAsync(String.Format("document.getElementsByClassName('video-stream html5-main-video')[0].volume = {0}", volume));
 
 				if (volume == "0")
@@ -148,7 +157,9 @@ namespace LofiGirlPlayer
 			VolumeMuteButton.IsEnabled = true;
 			VolumeSlider.IsEnabled = true;
 			WebTitleNameTB.Text = Browser.CoreWebView2.DocumentTitle;
-			SetPlay(true);
+			SetPlay(!config.DisableAutoPlay);
+			
+			
 			if (stopnav)
 			{
 				PlaySource(StreamComboBox.SelectedIndex);
@@ -217,6 +228,7 @@ namespace LofiGirlPlayer
 		{
 			SettingsPage sp = (SettingsPage)SettingsFrame.Content;
 			sp.mainWindow = this;
+			sp.LoadUISettings();
 			SettingsUIGrid.Visibility = Visibility.Visible;
 		}
 		public void HideSettingsWindow()

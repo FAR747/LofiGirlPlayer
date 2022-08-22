@@ -66,7 +66,7 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Orientation="Horizontal"
-                ToolTip="Disables autoplay on program startup.&#xA;Default: False">
+                ToolTip="Disables autoplay after stream loading.&#xA;Default: False">
                 <TextBlock
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
