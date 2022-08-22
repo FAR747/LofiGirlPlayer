@@ -7,8 +7,8 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="SettingsPage"
-    Width="600"
-    Height="400"
+    Width="Auto"
+    Height="Auto"
     d:DesignHeight="400"
     d:DesignWidth="600"
     Background="#FF303030"
@@ -30,6 +30,65 @@
                 Height="16"
                 Kind="Close" />
         </Button>
-
+        <TextBlock
+            Margin="0,2,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Foreground="White"
+            Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+            Text="Lofi Girl Player" />
+        <StackPanel
+            Margin="50,80,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Orientation="Vertical">
+            <StackPanel
+                VerticalAlignment="Top"
+                Orientation="Horizontal"
+                ToolTip="This setting disables the use of the GPU by the built-in browser, which can increase CPU usage.&#x0a;The parameter change takes effect after the program is restarted.&#x0a;Default: False">
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Foreground="White"
+                    Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                    Text="Disable GPU" />
+                <ToggleButton
+                    x:Name="DisableGPUTB"
+                    Margin="37,0,0,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    Style="{StaticResource MaterialDesignSwitchToggleButton}" />
+            </StackPanel>
+            <StackPanel
+                Margin="0,5,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Orientation="Horizontal"
+                ToolTip="Disables autoplay on program startup.&#xA;Default: False">
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Foreground="White"
+                    Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                    Text="Disable Autoplay" />
+                <ToggleButton
+                    x:Name="DisableAutoPlayTB"
+                    Margin="5,0,0,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Style="{StaticResource MaterialDesignSwitchToggleButton}" />
+            </StackPanel>
+        </StackPanel>
+        <TextBlock
+            x:Name="VersionTB"
+            Width="320"
+            Margin="2,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            Style="{StaticResource MaterialDesignCaptionTextBlock}"
+            Text="Version" />
     </Grid>
 </Page>

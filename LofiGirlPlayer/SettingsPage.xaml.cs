@@ -24,7 +24,7 @@ namespace LofiGirlPlayer
 		public SettingsPage()
 		{
 			InitializeComponent();
-			
+			VersionTB.Text = String.Format("Version {0} ({1})", App.VERSION_NAME, App.VERSION_CODE);
 		}
 
 		private void CloseSettingsButton_Click(object sender, RoutedEventArgs e)
