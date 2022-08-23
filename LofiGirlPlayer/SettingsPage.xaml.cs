@@ -81,7 +81,14 @@ namespace LofiGirlPlayer
 		private void SocialButton_Click(object sender, RoutedEventArgs e)
 		{
 			Button btn = (Button)sender;
-			System.Diagnostics.Process.Start(btn.Tag.ToString());
+			try
+			{
+				System.Diagnostics.Process.Start(btn.Tag.ToString());
+			}
+			catch
+			{
+				MessageBox.Show(String.Format("Failed to open link {0}", btn.Tag.ToString()), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+			}
 		}
 	}
 }

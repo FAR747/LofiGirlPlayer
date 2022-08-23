@@ -28,6 +28,7 @@ namespace LofiGirlPlayer
 	//document.getElementsByClassName('video-stream html5-main-video')[0].paused
 	public partial class MainWindow : Window
 	{
+		public const string SOURCESFILE = "./Sources.json";
 		public Config config = null;
 		public SourceList sourcelist = null;
 		public bool isplayed = true;
@@ -35,6 +36,11 @@ namespace LofiGirlPlayer
 		public MainWindow()
 		{
 			config = ConfigManager.LoadConfig();
+			if (config == null)
+			{
+				MessageBox.Show(String.Format("Error loading settings. Fix file \"{0}\" or delete it.", ConfigManager.CONFIGFILE.Replace("./", "")), "Critical error", MessageBoxButton.OK, MessageBoxImage.Error);
+				Environment.Exit(0);
+			}
 			string browserargs = "--autoplay-policy=no-user-gesture-required";
 			if (config.DisableGPU)
 			{
@@ -47,6 +53,11 @@ namespace LofiGirlPlayer
 			provider.NumberDecimalSeparator = ".";
 			VolumeSlider.Value = Convert.ToDouble(config.YTVolume, provider);
 			sourcelist = LoadSourceList();
+			if (sourcelist == null)
+			{
+				MessageBox.Show(String.Format("Error loading stream source file. Fix file \"{0}\" or download a new one from here {1}", SOURCESFILE.Replace("./", ""), "https://raw.githubusercontent.com/FAR747/LofiGirlPlayer/main/LofiGirlPlayer/Sources.json"), "Critical error", MessageBoxButton.OK, MessageBoxImage.Error);
+				Environment.Exit(0);
+			}
 			StreamComboBox.Items.Clear();
 			foreach (SourceListElement sl in sourcelist.Sources)
 			{
@@ -61,7 +72,7 @@ namespace LofiGirlPlayer
 			
 		}
 
-		public SourceList LoadSourceList(string file = "./Sources.json")
+		public SourceList LoadSourceList(string file = SOURCESFILE)
 		{
 			if (!File.Exists(file))
 			{

@@ -24,14 +24,21 @@ namespace LofiGirlPlayer
 
 	public static class ConfigManager
 	{
-		const string CONFIGFILE = "./Config.json";
+		public const string CONFIGFILE = "./Config.json";
 		public static Config LoadConfig()
 		{
 			if (File.Exists(CONFIGFILE))
 			{
 				string json = File.ReadAllText(CONFIGFILE);
-				Config config = JsonConvert.DeserializeObject<Config>(json);
-				return config;
+				try
+				{
+					Config config = JsonConvert.DeserializeObject<Config>(json);
+					return config;
+				}
+				catch
+				{
+					return null;
+				}
 			}
 			else
 			{

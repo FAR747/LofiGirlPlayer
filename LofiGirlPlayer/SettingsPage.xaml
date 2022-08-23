@@ -115,6 +115,17 @@
                     Style="{StaticResource MaterialDesignSwitchToggleButton}"
                     Unchecked="DisableAutoPlayTB_Checked" />
             </StackPanel>
+            <Button
+                Margin="0,10,0,0"
+                Padding="4"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Click="SocialButton_Click"
+                Content="Open Audio Settings"
+                Foreground="White"
+                Style="{StaticResource MaterialDesignOutlinedButton}"
+                Tag="ms-settings:apps-volume"
+                ToolTip="Opens the sound settings for Windows applications.&#xA;Change the output device &quot;Microsoft Edge WebView2&quot; if you want to output the stream audio to another device." />
         </StackPanel>
         <StackPanel
             Margin="7,80,0,0"
