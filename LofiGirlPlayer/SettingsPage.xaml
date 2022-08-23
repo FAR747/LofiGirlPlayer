@@ -26,11 +26,13 @@
                     <!--  HERE GOES YOUR CONTENT  -->
                     <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Text="For some parameters to take effect, you need to restart the program!" />
                     <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                        <Button x:Name="WarningNeedRestartCloseButton"
+                        <Button
+                            x:Name="WarningNeedRestartCloseButton"
                             Margin="0,8,8,0"
+                            Click="WarningNeedRestartCloseButton_Click"
                             Command="materialDesign:DialogHost.CloseDialogCommand"
                             IsDefault="True"
-                            Style="{StaticResource MaterialDesignFlatButton}" Click="WarningNeedRestartCloseButton_Click">
+                            Style="{StaticResource MaterialDesignFlatButton}">
                             <Button.CommandParameter>
                                 <system:Boolean>True</system:Boolean>
                             </Button.CommandParameter>
@@ -65,7 +67,7 @@
             Style="{StaticResource MaterialDesignHeadline5TextBlock}"
             Text="Lofi Girl Player" />
         <StackPanel
-            Margin="50,80,0,0"
+            Margin="90,80,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Orientation="Vertical">
@@ -112,6 +114,65 @@
                     Style="{StaticResource MaterialDesignSwitchToggleButton}"
                     Unchecked="DisableAutoPlayTB_Checked" />
             </StackPanel>
+        </StackPanel>
+        <StackPanel
+            Margin="7,80,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Opacity="0.95"
+            Orientation="Vertical">
+            <Button
+                Width="36"
+                Height="36"
+                Margin="0,0,0,5"
+                Click="SocialButton_Click"
+                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                Tag="https://github.com/FAR747/LofiGirlPlayer"
+                ToolTip="GitHub">
+                <materialDesign:PackIcon
+                    Width="16"
+                    Height="16"
+                    Kind="Github" />
+            </Button>
+            <Button
+                Width="36"
+                Height="36"
+                Margin="0,0,0,5"
+                Click="SocialButton_Click"
+                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                Tag="https://twitter.com/FAR747/"
+                ToolTip="Creator's Twitter">
+                <materialDesign:PackIcon
+                    Width="16"
+                    Height="16"
+                    Kind="Twitter" />
+            </Button>
+            <Button
+                Width="36"
+                Height="36"
+                Margin="0,0,0,5"
+                Click="SocialButton_Click"
+                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                Tag="https://far.hightgames.ru"
+                ToolTip="Creator's WebSite">
+                <materialDesign:PackIcon
+                    Width="16"
+                    Height="16"
+                    Kind="Web" />
+            </Button>
+            <Button
+                Width="36"
+                Height="36"
+                Margin="0,0,0,5"
+                Click="SocialButton_Click"
+                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                Tag="https://boosty.to/hightgames"
+                ToolTip="Support Creator on Boosty">
+                <materialDesign:PackIcon
+                    Width="16"
+                    Height="16"
+                    Kind="Gift" />
+            </Button>
         </StackPanel>
         <TextBlock
             x:Name="VersionTB"

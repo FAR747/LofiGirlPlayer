@@ -77,5 +77,11 @@ namespace LofiGirlPlayer
 			showwarningatclosing = false;
 			mainWindow.HideSettingsWindow();
 		}
+
+		private void SocialButton_Click(object sender, RoutedEventArgs e)
+		{
+			Button btn = (Button)sender;
+			System.Diagnostics.Process.Start(btn.Tag.ToString());
+		}
 	}
 }
