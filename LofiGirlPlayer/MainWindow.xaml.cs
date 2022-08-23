@@ -1,20 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using System.IO;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Microsoft.Web.WebView2.Core;
-using Microsoft.Web.WebView2.Wpf;
 using Newtonsoft.Json;
 
 namespace LofiGirlPlayer
@@ -69,7 +58,7 @@ namespace LofiGirlPlayer
 				}
 				StreamComboBox.Items.Add(item);
 			}
-			
+			Closing += OnWindowClosing;
 		}
 
 		public SourceList LoadSourceList(string file = SOURCESFILE)
@@ -99,7 +88,8 @@ namespace LofiGirlPlayer
 
 		public async void SetVolume(string volume = "1.0")
 		{
-			if (Browser.CoreWebView2 != null) {
+			if (Browser.CoreWebView2 != null)
+			{
 				config.YTVolume = volume;
 				await Browser.CoreWebView2.ExecuteScriptAsync(String.Format("document.getElementsByClassName('video-stream html5-main-video')[0].volume = {0}", volume));
 
@@ -127,7 +117,7 @@ namespace LofiGirlPlayer
 				SetPlayIcon(false);
 			}
 			isplayed = play;
-		} 
+		}
 
 		public void SetPlayIcon(bool isplayed)
 		{
@@ -170,8 +160,8 @@ namespace LofiGirlPlayer
 			VolumeSlider.IsEnabled = true;
 			WebTitleNameTB.Text = Browser.CoreWebView2.DocumentTitle;
 			SetPlay(!config.DisableAutoPlay);
-			
-			
+
+
 			if (stopnav)
 			{
 				PlaySource(StreamComboBox.SelectedIndex);
@@ -246,6 +236,14 @@ namespace LofiGirlPlayer
 		public void HideSettingsWindow()
 		{
 			SettingsUIGrid.Visibility = Visibility.Collapsed;
+		}
+
+		public void OnWindowClosing(object sender, CancelEventArgs e)
+		{
+			if (Browser.CoreWebView2 != null)
+			{
+				ConfigManager.SaveConfig(config);
+			}
 		}
 	}
 }
