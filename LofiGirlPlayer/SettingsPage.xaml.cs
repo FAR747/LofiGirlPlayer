@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,8 @@ namespace LofiGirlPlayer
 	public partial class SettingsPage : Page
 	{
 		public MainWindow mainWindow = null;
+		bool showwarningatclosing = false;
+		bool loaded = false;
 		public SettingsPage()
 		{
 			InitializeComponent();
@@ -30,13 +33,48 @@ namespace LofiGirlPlayer
 
 		public void LoadUISettings()
 		{
+			loaded = false;
 			DisableGPUTB.IsChecked = mainWindow.config.DisableGPU;
 			DisableAutoPlayTB.IsChecked = mainWindow.config.DisableAutoPlay;
+			showwarningatclosing = false;
+			loaded = true;
 		}
 
 		private void CloseSettingsButton_Click(object sender, RoutedEventArgs e)
-		{
+		{ 
 			ConfigManager.SaveConfig(mainWindow.config);
+			if (!showwarningatclosing)
+			{
+				mainWindow.HideSettingsWindow();
+			}
+			else
+			{
+				DialogHost.Show(WarningNeedRestartDH.DialogContent);
+			}
+		}
+
+		private void DisableGPUTB_Checked(object sender, RoutedEventArgs e)
+		{
+			if (loaded)
+			{
+				mainWindow.config.DisableGPU = (bool)DisableGPUTB.IsChecked;
+				ConfigManager.SaveConfig(mainWindow.config);
+				showwarningatclosing = true;
+			}
+		}
+
+		private void DisableAutoPlayTB_Checked(object sender, RoutedEventArgs e)
+		{
+			if (loaded)
+			{
+				mainWindow.config.DisableAutoPlay = (bool)DisableAutoPlayTB.IsChecked;
+				ConfigManager.SaveConfig(mainWindow.config);
+			}
+		}
+
+		private void WarningNeedRestartCloseButton_Click(object sender, RoutedEventArgs e)
+		{
+			showwarningatclosing = false;
 			mainWindow.HideSettingsWindow();
 		}
 	}

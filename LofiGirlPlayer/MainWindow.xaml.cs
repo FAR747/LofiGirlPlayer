@@ -41,6 +41,7 @@ namespace LofiGirlPlayer
 				browserargs += " --disable-gpu";
 			}
 			Environment.SetEnvironmentVariable("WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS", browserargs);
+			System.Diagnostics.Trace.WriteLine(browserargs);
 			InitializeComponent();
 			System.Globalization.NumberFormatInfo provider = new System.Globalization.NumberFormatInfo();
 			provider.NumberDecimalSeparator = ".";
