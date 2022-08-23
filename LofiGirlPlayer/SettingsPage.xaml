@@ -19,6 +19,7 @@
         <materialDesign:DialogHost
             x:Name="WarningNeedRestartDH"
             Panel.ZIndex="1000"
+            d:IsHidden="True"
             DialogTheme="Inherit">
             <materialDesign:DialogHost.DialogContent>
                 <!--  Thanks Ximaze C from https://stackoverflow.com/questions/63704148/wpf-materialdesign-dialog-host  -->
@@ -182,5 +183,53 @@
             VerticalAlignment="Bottom"
             Style="{StaticResource MaterialDesignCaptionTextBlock}"
             Text="Version" />
+        <Grid
+            Width="300"
+            Margin="0,80,5,0"
+            HorizontalAlignment="Right">
+            <TextBlock
+                VerticalAlignment="Top"
+                Foreground="White"
+                Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                Text="Developed by FAR747" />
+            <TextBlock
+                Margin="0,30,0,0"
+                VerticalAlignment="Top"
+                Foreground="White"
+                Style="{StaticResource MaterialDesignSubtitle2TextBlock}"
+                Text="Used libraries:" />
+            <StackPanel
+                Margin="0,54,0,0"
+                VerticalAlignment="Top"
+                Orientation="Vertical">
+                <Button
+                    Padding="2,4"
+                    HorizontalContentAlignment="Left"
+                    Click="SocialButton_Click"
+                    Content="Newtonsoft.Json"
+                    FontWeight="Light"
+                    Foreground="White"
+                    Style="{StaticResource MaterialDesignFlatLightButton}"
+                    Tag="https://www.newtonsoft.com/json" />
+                <Button
+                    Padding="2,4"
+                    HorizontalContentAlignment="Left"
+                    Click="SocialButton_Click"
+                    Content="Microsoft.Web.WebView2"
+                    FontWeight="Light"
+                    Foreground="White"
+                    Style="{StaticResource MaterialDesignFlatLightButton}"
+                    Tag="https://www.nuget.org/packages/Microsoft.Web.WebView2/" />
+                <Button
+                    Padding="2,4"
+                    HorizontalContentAlignment="Left"
+                    Click="SocialButton_Click"
+                    Content="Material Design In XAML"
+                    FontWeight="Light"
+                    Foreground="White"
+                    Style="{StaticResource MaterialDesignFlatLightButton}"
+                    Tag="https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit" />
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>
