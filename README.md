@@ -17,8 +17,8 @@ This player allows you to play YouTube streams from the [Lofi Girl](https://www.
 To add a stream to the player, you need to edit `Sources.json` by adding a new element to the `sources` array:  
 ```json
 {
-    "Name": "Top lofi",
-    "YTID": "GtL1huin9EE"
+  "Name": "Top lofi",
+  "YTID": "GtL1huin9EE"
 }
 ```
 - In `Name` specify the name that will be displayed in the interface;
