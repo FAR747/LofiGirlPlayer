@@ -37,10 +37,10 @@ An example file after adding the stream from the example above:
       "Name": "lofi hip hop radio - beats to sleep/chill to",
       "YTID": "rUxyKA_-grg"
     },
-	{
+    {
       "Name": "Top lofi",
       "YTID": "GtL1huin9EE"
-	}
+    }
   ]
 }
 ```
